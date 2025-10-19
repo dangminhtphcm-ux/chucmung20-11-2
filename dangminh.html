@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
-</html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Thư Ánh Sao - 20/10 Gửi Quyên Tối Ưu ✨</title>
+    <title>✨ Thư Ánh Sao - Cân Bằng Graphic & Hiệu suất ✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Charmonman:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Nền: Vũ trụ Đen và Sao phát sáng (Giữ nguyên) */
+        /* ================================== */
+        /* Tối ưu hóa Toàn Cục (Tăng Graphic Nhẹ) */
+        /* ================================== */
         body {
             display: flex;
             justify-content: center;
@@ -15,33 +16,36 @@
             min-height: 100vh;
             margin: 0;
             background-color: #000000;
-            background-image: radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px),
-                              radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px);
-            background-size: 550px 550px, 350px 350px;
+            /* Tăng nhẹ kích thước và độ trong suốt của hình nền sao */
+            background-image: radial-gradient(white, rgba(255, 255, 255, .15) 1.5px, transparent 30px),
+                              radial-gradient(white, rgba(255, 255, 255, .08) 1px, transparent 20px);
+            background-size: 400px 400px, 250px 250px; 
             background-position: 0 0, 40px 60px;
             font-family: 'Dancing Script', cursive;
             overflow: hidden;
             position: relative;
         }
 
-        /* Hiệu ứng Trái tim Đỏ Lấp Lánh Rơi (Giữ nguyên) */
+        /* Hiệu ứng Trái tim Đỏ Rơi (Tăng size và filter) */
         .sparkle-container {
             position: absolute;
             width: 100%;
             height: 100%;
             pointer-events: none;
             overflow: hidden;
-            z-index: 1; 
+            z-index: 1;
         }
 
         .glowing-heart {
             position: absolute;
-            font-size: 2em;
+            font-size: 2em; /* TĂNG GRAPHIC: Khôi phục kích thước gốc */
             color: #ff007f;
             opacity: 0;
             animation: heartGlowFall linear infinite;
-            filter: drop-shadow(0 0 10px #ff007f) drop-shadow(0 0 20px #ff1493) drop-shadow(0 0 30px #e91e63); 
+            /* TĂNG GRAPHIC: Tăng cường độ bóng đổ (từ 1 lên 2 lớp) */
+            filter: drop-shadow(0 0 8px #ff007f) drop-shadow(0 0 15px #ff1493); 
             transform: rotate(var(--rotation, 0deg));
+            will-change: transform, opacity;
         }
 
         @keyframes heartGlowFall {
@@ -51,24 +55,26 @@
             100% { transform: translate(var(--x), 100vh) scale(0) rotate(var(--rotation)); opacity: 0; }
         }
 
-        /* --- TỐI ƯU HIỂN THỊ LÁ THƯ (Responsive) --- */
+        /* --- TỐI ƯU HIỂN THỊ LÁ THƯ (Tăng Graphic Nhẹ) --- */
         #letter-content {
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(5px); 
-            border: 3px solid #ff007f; 
-            padding: 5vh 4vw; /* Dùng viewport units cho padding */
-            border-radius: 20px;
-            box-shadow: 0 0 50px 10px rgba(255, 0, 127, 0.7); 
-            max-width: 90vw; /* Giới hạn tối đa 90% chiều rộng màn hình */
-            max-height: 90vh; /* Giới hạn tối đa 90% chiều cao màn hình */
-            box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước tổng */
+            background: rgba(255, 255, 255, 0.1); /* TĂNG GRAPHIC: Đổi lại nền trắng mờ */
+            /* Vẫn LOẠI BỎ backdrop-filter để giữ FPS cao */
+            border: 3px solid #ff007f; /* Khôi phục độ dày border */
+            padding: 5vh 4vw;
+            border-radius: 20px; /* Khôi phục bo tròn */
+            /* TĂNG GRAPHIC: Tăng cường độ box-shadow */
+            box-shadow: 0 0 30px 8px rgba(255, 0, 127, 0.6); 
+            max-width: 90vw;
+            max-height: 90vh;
+            box-sizing: border-box;
             text-align: center;
             z-index: 10;
-            opacity: 1; 
-            transform: scale(1);
-            animation: letterEntrance 2s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: letterEntrance 1s ease-out forwards;
             color: #ffffff;
-            overflow-y: auto; /* Thêm thanh cuộn nếu nội dung quá dài */
+            overflow-y: auto;
+            will-change: transform, opacity;
         }
         
         @keyframes letterEntrance {
@@ -76,22 +82,23 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Kích thước chữ Mặc định (cho PC/màn hình lớn) */
+        /* Tăng hiệu ứng chữ */
         #letter-content h2 {
             font-family: 'Charmonman', cursive;
-            font-size: 4.2em;
-            color: #ff69b4; 
+            font-size: 4em; /* Tăng nhẹ kích thước */
+            color: #ff69b4;
+            /* TĂNG GRAPHIC: Khôi phục 2 lớp text-shadow */
             text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f; 
             margin-bottom: 25px;
         }
 
         #letter-content p {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.8em;
+            font-size: 2.6em; 
             line-height: 1.5;
-            color: #e0f7fa; 
+            color: #e0f7fa;
             white-space: pre-line;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* TĂNG GRAPHIC: Khôi phục text-shadow */
         }
 
         .signature {
@@ -100,25 +107,24 @@
             color: #da70d6;
         }
 
-        /* --- MEDIA QUERIES: Tối ưu cho Điện thoại/Màn hình nhỏ (dưới 768px) --- */
+        /* --- MEDIA QUERIES: Tối ưu cho Điện thoại --- */
         @media (max-width: 768px) {
             #letter-content {
-                padding: 3vh 5vw; /* Giảm padding một chút */
+                padding: 3vh 5vw;
                 max-width: 95vw;
             }
 
             #letter-content h2 {
-                font-size: 10vw; /* Kích thước chữ theo viewport width */
+                font-size: 9.5vw; 
                 margin-bottom: 15px;
             }
 
             #letter-content p {
-                font-size: 6vw; /* Kích thước chữ nhỏ hơn để hiển thị đủ */
+                font-size: 6vw;
             }
-
-            .signature {
-                font-size: 4.5vw;
-                margin-top: 25px;
+            
+            body {
+                background-size: 300px 300px, 150px 150px;
             }
         }
     </style>
@@ -133,7 +139,7 @@
             Chúc Quyên 20/10 vui vẻ,<br>
             luôn xinh đẹp rạng ngời,<br>
             học giỏi, và mãi dễ thươngg nhé!
-           
+            
         </p>
         <p class="signature">Gửi bằng ánh sáng vạn ngôi sao 💖</p>
         <p style="color:red"><a href="chuyen.html"> NHẤN VÀO ĐÂY ĐỂ CHUYỂN </a></p>
@@ -141,7 +147,10 @@
 
     <script>
         const sparkleContainer = document.querySelector('.sparkle-container');
-        const totalGlowingHearts = 60;
+        
+        // TĂNG GRAPHIC: Tăng số lượng Trái tim vừa phải
+        const totalHeartsDesktop = 40; // Tăng từ 30 lên 40 (PC/Màn hình lớn)
+        const totalHeartsMobile = 20;  // Tăng từ 15 lên 20 (Mobile)
 
         function createGlowingHeart() {
             const heart = document.createElement('div');
@@ -149,24 +158,29 @@
             heart.textContent = '💖';
 
             const startX = Math.random() * 100;
-            heart.style.left = `${startX}vw`; 
+            heart.style.left = `${startX}vw`;
             
             heart.style.setProperty('--x', `${startX}vw`); 
             heart.style.setProperty('--rotation', `${Math.random() * 360}deg`); 
             
-            heart.style.animationDelay = `${Math.random() * 8}s`;
-            heart.style.animationDuration = `${Math.random() * 6 + 4}s`; 
+            // Giữ thời gian animation hợp lý để đảm bảo mượt mà
+            heart.style.animationDelay = `${Math.random() * 5}s`;
+            heart.style.animationDuration = `${Math.random() * 5 + 3}s`;
             
             sparkleContainer.appendChild(heart);
         }
 
-        for (let i = 0; i < totalGlowingHearts; i++) {
-            createGlowingHeart();
+        // Logic phân chia số lượng dựa trên kích thước màn hình
+        let finalHeartCount;
+        if (window.innerWidth <= 768) {
+            finalHeartCount = totalHeartsMobile;
+        } else {
+            finalHeartCount = totalHeartsDesktop;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-             document.getElementById('letter-content').style.opacity = 1;
-        });
+        for (let i = 0; i < finalHeartCount; i++) {
+            createGlowingHeart();
+        }
     </script>
 </body>
 </html>
